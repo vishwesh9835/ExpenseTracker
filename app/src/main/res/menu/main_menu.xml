@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_analytics"
+        android:title="📊 Analytics"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_budget"
+        android:title="🎯 Set Budget"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_dark_mode"
+        android:title="🌙 Toggle Dark Mode"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_export_pdf"
+        android:title="📄 Export PDF"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_reset"
+        android:title="🗑 Reset All Data"
+        app:showAsAction="never"/>
+</menu>

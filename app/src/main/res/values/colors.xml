@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="md_theme_light_primary">#5B21B6</color>
+    <color name="md_theme_light_onPrimary">#FFFFFF</color>
+    <color name="md_theme_light_primaryContainer">#7C3AED</color>
+    <color name="md_theme_light_onPrimaryContainer">#F8F7FF</color>
+
+    <color name="colorIncome">#34D399</color>
+    <color name="colorExpense">#FB923C</color>
+    <color name="colorAccent">#7C3AED</color>
+
+    <color name="colorBackground">#F8F7FF</color>
+    <color name="colorCardBackground">#EDE9FE</color>
+    <color name="colorTextPrimary">#1F2937</color>
+    <color name="colorTextSecondary">#6B7280</color>
+
+    <color name="chartColor1">#6366F1</color>
+    <color name="chartColor2">#8B5CF6</color>
+    <color name="chartColor3">#EC4899</color>
+    <color name="chartColor4">#F43F5E</color>
+    <color name="chartColor5">#06B6D4</color>
+    <color name="chartColor6">#F97316</color>
+    <color name="chartColor7">#16A34A</color>
+    <color name="chartColor8">#D97706</color>
+</resources>

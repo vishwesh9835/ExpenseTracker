@@ -1,0 +1,11 @@
+<resources>
+    <style name="Base.Theme.ExpenseTracker" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">#818CF8</item>
+        <item name="colorOnPrimary">#1E1B4B</item>
+        <item name="colorPrimaryContainer">#6366F1</item>
+        <item name="colorOnPrimaryContainer">#E0E7FF</item>
+        <item name="android:statusBarColor">#1E1B4B</item>
+        <item name="android:windowBackground">#111827</item>
+    </style>
+    <style name="Theme.ExpenseTracker" parent="Base.Theme.ExpenseTracker"/>
+</resources>
