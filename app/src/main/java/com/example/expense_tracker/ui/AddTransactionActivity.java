@@ -74,7 +74,10 @@ public class AddTransactionActivity extends AppCompatActivity {
             String note     = extras.getString("note", "");
             boolean recurring = extras.getBoolean("isRecurring", false);
 
-            etAmount.setText(String.valueOf(amount));
+            // Show as integer if whole number (e.g. 100 instead of 100.0)
+            etAmount.setText(amount == Math.floor(amount) && !Double.isInfinite(amount)
+                    ? String.valueOf((long) amount)
+                    : String.valueOf(amount));
             etNote.setText(note);
             switchRecurring.setChecked(recurring);
 

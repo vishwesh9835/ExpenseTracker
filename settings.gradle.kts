@@ -21,6 +21,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Expense-Tracker"
+rootProject.name = "Born-To-Track"
 include(":app")
  

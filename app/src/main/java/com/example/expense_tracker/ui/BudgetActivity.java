@@ -92,7 +92,7 @@ public class BudgetActivity extends AppCompatActivity {
 
                     // Label
                     TextView lbl = new TextView(this);
-                    lbl.setText(cat + (cat.equals("Overall") ? " Budget" : " Budget"));
+                    lbl.setText(cat.equals("Overall") ? "Overall Monthly Budget" : cat + " Budget");
                     lbl.setTextSize(14f);
                     lbl.setTypeface(android.graphics.Typeface.DEFAULT_BOLD);
                     lbl.setTextColor(android.graphics.Color.parseColor("#1F2937"));
@@ -165,7 +165,12 @@ public class BudgetActivity extends AppCompatActivity {
                 TextInputEditText et = fieldMap.get(cat);
                 if (et == null) continue;
                 String val = et.getText() != null ? et.getText().toString().trim() : "";
-                double limit = val.isEmpty() ? 0 : Double.parseDouble(val);
+                double limit;
+                try {
+                    limit = val.isEmpty() ? 0 : Double.parseDouble(val);
+                } catch (NumberFormatException e) {
+                    limit = 0;
+                }
                 Budget existing = db.budgetDao().getBudgetForCategory(cat, monthKey);
                 if (existing == null) {
                     db.budgetDao().insert(new Budget(cat, limit, monthKey));

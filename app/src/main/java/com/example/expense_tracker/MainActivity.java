@@ -468,7 +468,7 @@ public class MainActivity extends AppCompatActivity {
         String today = new SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).format(new Date());
 
         int y = 50;
-        c.drawText("Expense Tracker — " + tvMonthLabel.getText(), 50, y, title); y += 22;
+        c.drawText("Born To Track — " + tvMonthLabel.getText(), 50, y, title); y += 22;
         c.drawText("Exported: " + today, 50, y, body); y += 28;
         c.drawLine(50, y, 545, y, line); y += 20;
 
@@ -502,7 +502,7 @@ public class MainActivity extends AppCompatActivity {
         }
         pdf.finishPage(page);
 
-        String fn = "ExpenseReport_" + System.currentTimeMillis() + ".pdf";
+        String fn = "BornToTrack_" + System.currentTimeMillis() + ".pdf";
         java.io.File file = new java.io.File(
                 getExternalFilesDir(android.os.Environment.DIRECTORY_DOCUMENTS), fn);
         try {
