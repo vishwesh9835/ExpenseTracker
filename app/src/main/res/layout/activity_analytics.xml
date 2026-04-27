@@ -6,17 +6,23 @@
     android:layout_height="match_parent"
     android:background="?attr/android:windowBackground">
 
+    <!-- App Bar -->
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="?attr/android:windowBackground"
+        app:elevation="0dp">
+
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-
+            android:background="?attr/android:windowBackground"
             app:title="Analytics"
-            app:titleTextColor="?attr/colorOnPrimary"/>
+            app:titleCentered="true"
+            app:titleTextColor="?attr/colorOnSurface"
+            app:titleTextAppearance="@style/TextAppearance.Material3.TitleLarge"/>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -28,109 +34,301 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:paddingHorizontal="16dp"
+            android:paddingBottom="32dp">
 
-            <!-- Summary cards row -->
-            <LinearLayout
-                android:orientation="horizontal"
+            <!-- ── HERO SUMMARY GRADIENT BANNER ── -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:weightSum="3">
+                app:cardCornerRadius="20dp"
+                app:cardElevation="6dp"
+                app:strokeWidth="0dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="20dp"
+                app:cardBackgroundColor="@android:color/transparent">
 
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="0dp" android:layout_weight="1"
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="6dp"
-                    app:cardCornerRadius="12dp" app:cardElevation="1dp" app:strokeWidth="0dp"
-                    app:cardBackgroundColor="?attr/colorSurface">
-                    <LinearLayout android:orientation="vertical"
-                        android:layout_width="match_parent" android:layout_height="wrap_content"
-                        android:padding="12dp" android:gravity="center">
-                        <TextView android:text="Tracked" android:textSize="10sp"
-                            android:textColor="@color/colorTextSecondary"
-                            android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-                        <TextView android:id="@+id/tvSummaryMonth" android:text="—"
-                            android:textSize="11sp" android:textStyle="bold"
-                            android:textColor="?attr/colorOnSurface" android:gravity="center"
-                            android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
+                    android:background="@drawable/analytics_card_bg"
+                    android:padding="20dp">
 
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="0dp" android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="3dp"
-                    app:cardCornerRadius="12dp" app:cardElevation="1dp" app:strokeWidth="0dp"
-                    app:cardBackgroundColor="?attr/colorSurface">
-                    <LinearLayout android:orientation="vertical"
-                        android:layout_width="match_parent" android:layout_height="wrap_content"
-                        android:padding="12dp" android:gravity="center">
-                        <TextView android:text="Avg/Month" android:textSize="10sp"
-                            android:textColor="@color/colorTextSecondary"
-                            android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-                        <TextView android:id="@+id/tvAvgExpense" android:text="₹0"
-                            android:textSize="14sp" android:textStyle="bold"
-                            android:textColor="#DC2626"
-                            android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
+                    <TextView
+                        android:text="OVERVIEW"
+                        android:textSize="10sp"
+                        android:letterSpacing="0.18"
+                        android:textStyle="bold"
+                        android:textColor="#99FFFFFF"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"/>
 
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="0dp" android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="6dp"
-                    app:cardCornerRadius="12dp" app:cardElevation="1dp" app:strokeWidth="0dp"
-                    app:cardBackgroundColor="?attr/colorSurface">
-                    <LinearLayout android:orientation="vertical"
-                        android:layout_width="match_parent" android:layout_height="wrap_content"
-                        android:padding="12dp" android:gravity="center">
-                        <TextView android:text="Top Category" android:textSize="10sp"
-                            android:textColor="@color/colorTextSecondary"
-                            android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-                        <TextView android:id="@+id/tvTopCategory" android:text="—"
-                            android:textSize="12sp" android:textStyle="bold"
-                            android:textColor="?attr/colorPrimary" android:gravity="center"
-                            android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-            </LinearLayout>
-
-            <!-- Bar chart -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                app:cardCornerRadius="16dp" app:cardElevation="1dp" app:strokeWidth="0dp"
-                android:layout_marginBottom="16dp"
-                app:cardBackgroundColor="?attr/colorSurface">
-                <LinearLayout android:orientation="vertical"
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:padding="16dp">
-                    <TextView android:text="Monthly Spending Trend"
-                        android:textSize="13sp" android:fontFamily="sans-serif-medium"
-                        android:textColor="@color/colorTextSecondary"
-                        android:layout_marginBottom="12dp"
-                        android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-                    <com.github.mikephil.charting.charts.BarChart
-                        android:id="@+id/barChart"
+                    <!-- Three stat tiles -->
+                    <LinearLayout
+                        android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"/>
+                        android:layout_height="wrap_content"
+                        android:weightSum="3">
+
+                        <!-- Months Tracked -->
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:background="#22FFFFFF"
+                            android:padding="12dp"
+                            android:layout_marginEnd="6dp">
+
+                            <TextView
+                                android:text="📅"
+                                android:textSize="22sp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"/>
+
+                            <TextView
+                                android:id="@+id/tvSummaryMonthCount"
+                                android:text="—"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:textColor="#FFFFFF"
+                                android:gravity="center"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:id="@+id/tvSummaryMonth"
+                                android:text="Months"
+                                android:textSize="10sp"
+                                android:textColor="#CCFFFFFF"
+                                android:gravity="center"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
+
+                        <!-- Avg/Month -->
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:background="#22FFFFFF"
+                            android:padding="12dp"
+                            android:layout_marginHorizontal="3dp">
+
+                            <TextView
+                                android:text="📊"
+                                android:textSize="22sp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"/>
+
+                            <TextView
+                                android:id="@+id/tvAvgExpense"
+                                android:text="₹0"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                android:textColor="#FCA5A5"
+                                android:gravity="center"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:text="Avg/Month"
+                                android:textSize="10sp"
+                                android:textColor="#CCFFFFFF"
+                                android:gravity="center"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
+
+                        <!-- Top Category -->
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:background="#22FFFFFF"
+                            android:padding="12dp"
+                            android:layout_marginStart="6dp">
+
+                            <TextView
+                                android:text="🏆"
+                                android:textSize="22sp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"/>
+
+                            <TextView
+                                android:id="@+id/tvTopCategory"
+                                android:text="—"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:textColor="#86EFAC"
+                                android:gravity="center"
+                                android:maxLines="2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:text="Top Category"
+                                android:textSize="10sp"
+                                android:textColor="#CCFFFFFF"
+                                android:gravity="center"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Category breakdown -->
+            <!-- ── BAR CHART CARD ── -->
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                app:cardCornerRadius="16dp" app:cardElevation="1dp" app:strokeWidth="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="?attr/colorOutline"
                 android:layout_marginBottom="16dp"
                 app:cardBackgroundColor="?attr/colorSurface">
-                <LinearLayout android:orientation="vertical"
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:padding="16dp">
-                    <TextView android:text="Category Breakdown (All Time)"
-                        android:textSize="13sp" android:fontFamily="sans-serif-medium"
-                        android:textColor="@color/colorTextSecondary"
-                        android:layout_marginBottom="16dp"
-                        android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp">
+
+                    <!-- Header row -->
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="16dp">
+
+                        <TextView
+                            android:text="Monthly Spending Trend"
+                            android:textSize="15sp"
+                            android:fontFamily="sans-serif-medium"
+                            android:textColor="?attr/colorOnSurface"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:text="Last 6 months"
+                            android:textSize="11sp"
+                            android:textColor="?attr/colorPrimary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:id="@+id/barChart"
+                        android:layout_width="match_parent"
+                        android:layout_height="220dp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ── PIE CHART CARD ── -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/pieChartCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="?attr/colorOutline"
+                android:layout_marginBottom="16dp"
+                android:visibility="gone"
+                app:cardBackgroundColor="?attr/colorSurface">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="12dp">
+
+                        <TextView
+                            android:text="Expense by Category"
+                            android:textSize="15sp"
+                            android:fontFamily="sans-serif-medium"
+                            android:textColor="?attr/colorOnSurface"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:text="All Time"
+                            android:textSize="11sp"
+                            android:textColor="?attr/colorPrimary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
+                    <com.github.mikephil.charting.charts.PieChart
+                        android:id="@+id/pieChart"
+                        android:layout_width="match_parent"
+                        android:layout_height="220dp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ── CATEGORY BREAKDOWN CARD ── -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="?attr/colorOutline"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="?attr/colorSurface">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="20dp">
+
+                        <TextView
+                            android:text="Category Breakdown"
+                            android:textSize="15sp"
+                            android:fontFamily="sans-serif-medium"
+                            android:textColor="?attr/colorOnSurface"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:text="All Time"
+                            android:textSize="11sp"
+                            android:textColor="?attr/colorPrimary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
                     <LinearLayout
                         android:id="@+id/categoryBreakdownContainer"
                         android:orientation="vertical"
@@ -139,20 +337,47 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Top expenses -->
+            <!-- ── TOP 5 EXPENSES CARD ── -->
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                app:cardCornerRadius="16dp" app:cardElevation="1dp" app:strokeWidth="0dp"
-                android:layout_marginBottom="24dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="?attr/colorOutline"
+                android:layout_marginBottom="8dp"
                 app:cardBackgroundColor="?attr/colorSurface">
-                <LinearLayout android:orientation="vertical"
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:padding="16dp">
-                    <TextView android:text="Top 5 Expenses"
-                        android:textSize="13sp" android:fontFamily="sans-serif-medium"
-                        android:textColor="@color/colorTextSecondary"
-                        android:layout_marginBottom="16dp"
-                        android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="16dp">
+
+                        <TextView
+                            android:text="Top 5 Expenses"
+                            android:textSize="15sp"
+                            android:fontFamily="sans-serif-medium"
+                            android:textColor="?attr/colorOnSurface"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:text="Biggest Spends"
+                            android:textSize="11sp"
+                            android:textColor="?attr/colorPrimary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
                     <LinearLayout
                         android:id="@+id/topExpensesContainer"
                         android:orientation="vertical"
@@ -163,4 +388,5 @@
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
